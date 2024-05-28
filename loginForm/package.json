@@ -1,0 +1,14 @@
+{
+  "name": "login-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx cypress open"
+  },
+  "author": "Artem Kasperovich",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.9.0"
+  }
+}
