@@ -33,7 +33,7 @@ function changeDoubleLetters(string) {
           letters[i].charCodeAt() === indexLowerZ
             ? indexLowerA
             : letters[i].charCodeAt() === indexUpperZ
-            ? indexUpperZ
+            ? indexUpperA
             : letters[i].charCodeAt() + 1
         )
       );
