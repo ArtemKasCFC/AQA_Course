@@ -7,8 +7,7 @@ const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawa
 
 const filterPizza = pizzaNames => {
   const filteredNames = pizzaNames.filter(
-    name =>
-      !competitorPizzas.map(competitorPizza => competitorPizza.toLocaleLowerCase()).includes(name.toLocaleLowerCase())
+    name => !competitorPizzas.map(competitorPizza => competitorPizza.toLowerCase()).includes(name.toLowerCase())
   );
   return filteredNames.length === 0 ? null : filteredNames;
 };
