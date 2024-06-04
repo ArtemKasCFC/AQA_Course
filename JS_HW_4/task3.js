@@ -26,17 +26,16 @@ const indexUpperZ = 90,
 function changeDoubleLetters(string) {
   const letters = string.split('');
   const resultArray = [];
+
   for (let i = 0; i < letters.length; ++i) {
     if (letters[i] === letters[i - 1]) {
-      resultArray.push(
-        String.fromCharCode(
-          letters[i].charCodeAt() === indexLowerZ
-            ? indexLowerA
-            : letters[i].charCodeAt() === indexUpperZ
-            ? indexUpperA
-            : letters[i].charCodeAt() + 1
-        )
-      );
+      let nextLetterIndex;
+
+      if (letters[i].charCodeAt() === indexLowerZ) nextLetterIndex = indexLowerA;
+      else if (letters[i].charCodeAt() === indexUpperZ) nextLetterIndex = indexUpperA;
+      else nextLetterIndex = letters[i].charCodeAt() + 1;
+
+      resultArray.push(String.fromCharCode(nextLetterIndex));
     } else if (letters[i] === letters[i + 1]) {
       continue;
     } else {

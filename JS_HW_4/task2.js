@@ -6,35 +6,47 @@
 const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 
 const filterPizza = pizzaNames => {
-  const filteredNames = pizzaNames.filter(name => !competitorPizzas.includes(name));
+  const filteredNames = pizzaNames.filter(
+    name =>
+      !competitorPizzas.map(competitorPizza => competitorPizza.toLocaleLowerCase()).includes(name.toLocaleLowerCase())
+  );
   return filteredNames.length === 0 ? null : filteredNames;
 };
 
 console.log(filterPizza(['BBQ Chicken', 'Caprichosa', 'Diablo', '4 cheeses', 'Neapolitan']));
 console.log(filterPizza(['Caprichosa', 'Diablo', '4 cheeses']));
+console.log(filterPizza(['diablo', '4 Cheeses', 'Hawai', 'French']));
 
 // 2. Написать функцию, которая принимает предложение (слова разделенные только пробелами) в качестве параметра и выводит в консоль слово с наибольшим количеством букв.
 //   Если таких слов несколько - выводит их все.
 
 const showLargestWord = sentence => {
   const longestWordlength = sentence.split(' ').sort((a, b) => b.length - a.length)[0].length;
+
   const longestWords = sentence
     .split(' ')
     .filter(word => !/[.,]+/.test(word))
     .filter(word => word.length === longestWordlength);
-  console.log(...longestWords);
+
+  const result = longestWords.join(', ');
+
+  return result;
 };
 
-showLargestWord(
-  `The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. 
+console.log(
+  showLargestWord(
+    `The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. 
   Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, 
   for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great 
   vengeance and furious anger those who attempt to poison and destroy My brothers. And you will know I am the Lord when I lay My vengeance upon you.`
+  )
 );
 
-showLargestWord(
-  `And I will strike down upon thee with great 
+console.log(
+  showLargestWord(
+    `And I will strike down upon thee with great 
   vengeance and furious anger those who attempt to poison and destroy My brothers. And you will know I am the Lord when I lay My vengeance upon you.`
+  )
 );
 
 // 3. Напишите функцию, которая принимает на вход массив чисел, убирает из него дубликаты и возвращает массив с только уникальными значениями.
