@@ -15,16 +15,22 @@
 //   1 454 548 = 1,5 Mb
 
 //   Результат должен быть округлен до 1 знака после запятой методом .toFixed(), про который надо почитать самим ;)
-const size = 1024;
 
-const convertBytes = bytes =>
+const convertBytes = (bytes, power) => (bytes / Math.pow(1024, power)).toFixed(1);
+
+const showConvetedBytes = bytes =>
   console.log(
-    `${bytes} bytes = ${(bytes / Math.pow(size, 1)).toFixed(1)} kB, ${(bytes / Math.pow(size, 2)).toFixed(1)} Mb, ${(
-      bytes / Math.pow(size, 3)
-    ).toFixed(1)} Gb, ${(bytes / Math.pow(size, 4)).toFixed(1)} Tb`
+    `${bytes} bytes = 
+    ${convertBytes(bytes, 1)} kB, 
+    ${convertBytes(bytes, 2)} Mb,
+    ${convertBytes(bytes, 3)} Gb, 
+    ${convertBytes(bytes, 4)} Tb`
   );
 
-convertBytes(16565846);
+showConvetedBytes(16_565_846);
+showConvetedBytes(4_548);
+showConvetedBytes(454_548);
+showConvetedBytes(1_454_548);
 
 // 2. Сделать из "*" в консоли равнобедренный треугольник и ромб
 
